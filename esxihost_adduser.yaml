@@ -1,0 +1,15 @@
+---
+- hosts: localhost
+  connection: local
+# Example vmware_local_user_manager command from Ansible Playbooks
+  tasks:
+  - name: Add local user to ESXi
+    local_action:
+        module: vmware_local_user_manager
+        hostname: "{{ item }}"
+        local_user_name: "spUCCMDB_01"
+        local_user_password: "123Four!"
+    with_items:
+    - col-vmw-u005 
+#    - "{{ groups['esxi_hosts'] }}"
+Footer
